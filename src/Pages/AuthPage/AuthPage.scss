@@ -1,0 +1,38 @@
+.auth {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../../assets/img/auth-bg.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &__body {
+        display: flex;
+        max-width: 500px;
+        min-height: 400px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        align-content: flex-start;
+        justify-content: center;
+        border-radius: 12px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    &__form-title {
+        width: 100%;
+        margin: 20px 0 40px;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    &__change-link {
+        margin: 30px 0 0;
+        font-size: 14px;
+    }
+}
