@@ -1,0 +1,218 @@
+.main-layout {
+    min-height: 100vh;
+
+    &__container {
+        display: flex;
+        min-height: 100vh;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__body {
+        position: relative;
+        display: flex;
+        width: 100%;
+        margin: 0 auto;
+        max-width: 1100px;
+        min-height: 600px;
+        align-items: stretch;
+        justify-content: flex-end;
+        border-radius: 18px;
+        background-color: #fff;
+        overflow: auto;
+    }
+
+    &__body.show-aside {
+        .main-layout__aside {
+            transform: translateX(0%);
+        }
+
+        .main-layout__content {
+            width: 75%;
+        }
+    }
+
+    &__aside {
+        position: absolute;
+        width: 25%;
+        padding: 10px;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        color: #fffbd3;
+        transform: translateX(-100%);
+        background-color: #085a64;
+        transition: all 1s ease;
+        z-index: 30;
+    }
+
+    &__user {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__user-img {
+        display: flex;
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #fffbd3;
+
+        img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    &__user-info {
+        width: 100%;
+        margin: 10px;
+
+        p {
+            text-align: center;
+            word-break: break-all;
+            margin: 3px 0 0 0;
+        }
+    }
+
+    &__descr {
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    &__links {
+        margin: 10px 0;
+    }
+
+    &__link-item {
+        display: flex;
+        margin: 5px 0;
+        align-items: center;
+        font-size: 16px;
+        text-decoration: none;
+        color: #fffbd3;
+        transition: color .3s ease;
+
+        &:hover {
+            color: #c3ff38;
+        }
+
+        &.active {
+            color: #b9ff15;
+        }
+
+        .MuiSvgIcon-root {
+            margin: 0 7px 0 0;
+            font-size: 26px;
+        }
+
+        &.leave {
+            margin: 30px 0 0;
+        }
+    }
+
+    &__content {
+        width: 100%;
+        transition: width 1s ease;
+    }
+
+    &__content-header {
+        display: flex;
+        width: 100%;
+        height: 40px;
+        background-color: #ffd43e;
+    }
+
+    &__header-bread {
+        margin: 0 0 0 15px;
+        max-width: 70%;
+        align-self: center;
+        overflow: hidden;
+        cursor: default;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    &__header-controls {
+        display: flex;
+        margin: 0 0 0 auto;
+        padding: 0 15px;
+        align-items: center;
+    }
+
+    &__header-btn {
+        display: flex;
+        margin: 0 0 0 10px;
+        padding: 0;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background-color: transparent;
+
+        &:hover {
+            .MuiSvgIcon-root {
+                color: #09b4ca;
+            }
+        }
+
+        .MuiSvgIcon-root {
+            color: #085a64;
+            font-size: 22px;
+        }
+
+        &.update {
+            transform: rotate(0deg);
+            transition: all .3s ease;
+
+            &:active {
+                transform: rotate(-180deg);
+            }
+        }
+
+        &.menu {
+            .MuiSvgIcon-root {
+                font-size: 28px;
+            }
+        }
+    }
+}
+
+
+@media all and (max-width: 768px) {
+    .main-layout {
+        &__body.show-aside {
+            .main-layout__aside {
+                transform: translateX(0%);
+            }
+
+            .main-layout__content {
+                width: 100%;
+            }
+        }
+
+        &__aside {
+            width: 75%;
+        }
+
+        &__user {
+            justify-content: flex-start;
+        }
+
+        &__user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+}

@@ -1,16 +1,27 @@
-export type UniqueEmailResponse = {
-    isUniqueEmail: boolean
+import { Roles } from './redux';
+
+export type Tokens = {
+    access_token: string
+    refresh_token: string
+    exp_access: number
+    exp_refresh: number
 }
 
-export type User = {
+export type UniqueEmailResp = {
+    email: string
+    isUnique: boolean
+}
+
+export type LoginResp = {
+    success: boolean
+    tokens: Tokens
+    message?: string
+}
+
+export type UserInfoResp = {
     email: string
     nickName: string
     password: string
-    __v: number
-    _id: string
-}
-
-export type LoginResponse = {
-    user: User | null
-    success: boolean
+    id: string
+    roles: Roles[]
 }

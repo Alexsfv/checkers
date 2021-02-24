@@ -1,27 +1,11 @@
-import { Button, TextField } from '@material-ui/core'
+import { Button, CircularProgress, TextField } from '@material-ui/core'
 import axios from 'axios'
 import { useFormik } from 'formik'
-import React from 'react'
+import React, { useState } from 'react'
 import { RegisterFormValues } from '../../../types/requestTypes'
 import * as yup from 'yup'
-import { UniqueEmailResponse } from '../../../types/responseTypes'
-import { REGISTER_URL, CHECK_UNIQUE_EMAIL_URL } from '../../../config'
-
-
-const checkUniqueEmail = async (value: string | undefined) => {
-    try {
-        const res = await axios.post(CHECK_UNIQUE_EMAIL_URL, { email: value })
-        console.log(res)
-        const data = res.data as UniqueEmailResponse
-        if (data) {
-            return data.isUniqueEmail
-        }
-        return false
-    } catch(e) {
-        console.log(e)
-        return false
-    }
-}
+import { REGISTER_URL } from '../../../config'
+import { checkUniqueEmail } from '../../../utils/other'
 
 const validationSchema = yup.object({
     email: yup.string()
@@ -32,7 +16,7 @@ const validationSchema = yup.object({
         .min(4, 'Минимум 4 символа')
         .required('Обязательное поле'),
     password: yup.string()
-        .min(4, 'Минимум 4 символа')
+        .min(6, 'Минимум 6 символов')
         .required('Обязательное поле'),
     confirmPassword: yup.string()
         .oneOf([yup.ref('password'), null], 'Пароль должны совпадать')
@@ -43,6 +27,7 @@ type RegisterFormProps = {}
 
 const RegisterForm: React.FC<RegisterFormProps> = () => {
 
+    const [isLoading, setLoading] = useState<boolean>(false)
 
     const formik = useFormik({
         initialValues: {
@@ -52,8 +37,9 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
             confirmPassword: '',
         },
         validationSchema,
-        onSubmit: (values: RegisterFormValues) => {
-            sendData({
+        validateOnChange: false,
+        onSubmit: async (values: RegisterFormValues) => {
+            await sendData({
                 email: values.email,
                 nickName: values.nickName,
                 password: values.password
@@ -66,7 +52,9 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
     const sendData = async (data: RegisterFormValues) => {
         try {
             console.log('register', data)
+            setLoading(true)
             const res = await axios.put(REGISTER_URL, data)
+            setLoading(false)
             console.log('register res', res)
         } catch (e) {
             console.log(e)
@@ -125,12 +113,15 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
                 />
             </label>
 
+            {isLoading && <CircularProgress style={{ width: 30, height: 30 }}/>}
+
             <Button
                 type="submit"
                 variant="outlined"
                 size="medium"
                 color="primary"
                 className="auth-form__send"
+                disabled={isLoading}
             >
                 Регистрация
                 </Button>

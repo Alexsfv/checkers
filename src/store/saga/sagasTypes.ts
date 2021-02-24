@@ -1,0 +1,5 @@
+export const SAGA_INITIAL_APP = 'SAGA_INITIAL_APP'
+export const SAGA_INITIAL_USER = 'SAGA_INITIAL_USER'
+
+export const SAGA_LOGIN = 'SAGA_LOGIN'
+export const SAGA_LOGOUT = 'SAGA_LOGOUT'

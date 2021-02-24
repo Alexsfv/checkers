@@ -26,3 +26,11 @@
         margin: 30px 0 0 auto !important;
     }
 }
+
+.auth-form-error {
+    p {
+        margin: 0;
+        color: rgb(223, 49, 49);
+        font-size: 14px;
+    }
+}

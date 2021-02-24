@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import './App.scss'
-import AuthPage from './Pages/AuthPage/AuthPage';
+import { MainRouter } from './router/router';
+import { sagasActions } from './store/saga/sagasActions';
 
 function App() {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(sagasActions.initialApp())
+    }, [])
+
     return (
-        <AuthPage/>
+        <MainRouter/>
     )
 }
 

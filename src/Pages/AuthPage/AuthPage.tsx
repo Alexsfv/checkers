@@ -10,7 +10,6 @@ const AuthPage: React.FC<AuthPageProps> = () => {
 
     const [formType, setFormType] = useState<'login' | 'register'>('login')
 
-
     return (
         <div className="auth">
             <div className="container">
