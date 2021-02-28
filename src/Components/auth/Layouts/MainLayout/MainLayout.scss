@@ -12,6 +12,7 @@
     &__body {
         position: relative;
         display: flex;
+        max-height: 95vh;
         width: 100%;
         margin: 0 auto;
         max-width: 1100px;
@@ -122,6 +123,7 @@
 
     &__content {
         width: 100%;
+        overflow: auto;
         transition: width 1s ease;
     }
 

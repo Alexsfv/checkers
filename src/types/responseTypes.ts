@@ -1,4 +1,5 @@
 import { Roles } from './redux';
+import { GlobalMessage } from './state';
 
 export type Tokens = {
     access_token: string
@@ -24,4 +25,24 @@ export type UserInfoResp = {
     password: string
     id: string
     roles: Roles[]
+    image: string
 }
+
+
+
+
+/// WS
+
+// global message
+type GlobalMessagesResp = {
+    type: 'all_messages',
+    data: GlobalMessage[]
+}
+
+type GlobalMessageResp = {
+    type: 'added_message',
+    data: GlobalMessage
+}
+
+export type AllGlobalMessageResp = GlobalMessagesResp | GlobalMessageResp
+//

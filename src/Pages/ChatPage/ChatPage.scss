@@ -1,0 +1,37 @@
+@import '../../assets/styles/variables.scss';
+
+
+.global-chat {
+    display: flex;
+    height: calc(100% - #{$header_height});
+
+    &__container {
+        max-width: 70%;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__users-list {
+        max-width: 30%;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .global-chat {
+        flex-direction: column-reverse;
+        height: auto;
+
+        &__container {
+            max-width: 100%;
+            height: 400px;
+        }
+
+        &__users-list {
+            max-width: 100%;
+            width: 100%;
+            height: 300px;
+        }
+    }
+}

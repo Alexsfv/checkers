@@ -2,7 +2,7 @@ import { Button, CircularProgress, TextField } from '@material-ui/core'
 import axios from 'axios'
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
-import { RegisterFormValues } from '../../../types/requestTypes'
+import { RegisterFormData, RegisterFormValues } from '../../../types/requestTypes'
 import * as yup from 'yup'
 import { REGISTER_URL } from '../../../config'
 import { checkUniqueEmail } from '../../../utils/other'
@@ -39,17 +39,19 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
         validationSchema,
         validateOnChange: false,
         onSubmit: async (values: RegisterFormValues) => {
+            const imgUrl = await getRandomImg()
             await sendData({
                 email: values.email,
                 nickName: values.nickName,
-                password: values.password
+                password: values.password,
+                image: imgUrl,
             })
             formik.resetForm()
         },
     })
 
 
-    const sendData = async (data: RegisterFormValues) => {
+    const sendData = async (data: RegisterFormData) => {
         try {
             console.log('register', data)
             setLoading(true)
@@ -59,6 +61,11 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
         } catch (e) {
             console.log(e)
         }
+    }
+
+    const getRandomImg = async() => {
+        const res = await axios.get('https://picsum.photos/400')
+        return res.request.responseURL
     }
 
     return (

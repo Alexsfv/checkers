@@ -1,8 +1,8 @@
 import { getCookie } from './utils/cookie';
 import { LoginResp, UserInfoResp, Tokens } from './types/responseTypes';
-import { LOGIN_URL, USER_INFO_URL, AccessTokenName, TOKEN_REFRESH_URL, RefreshTokenName, LOGOUT_URL } from './config';
+import { LOGIN_URL, USER_INFO_URL, AccessTokenName, TOKEN_REFRESH_URL, RefreshTokenName, LOGOUT_URL, GLOBAL_MESSAGE_ADD_URL } from './config';
 import axios from 'axios';
-import { LoginFormValues } from './types/requestTypes';
+import { LoginFormValues, CreateGloballMessage } from './types/requestTypes';
 
 
 export const Api = {
@@ -38,6 +38,15 @@ export const Api = {
         try {
             const data = { refresh_token: getCookie(RefreshTokenName) }
             await axios.post(LOGOUT_URL, data)
+        } catch(e) {
+            console.log(e)
+        }
+    },
+    async AddGlobalMessage(data: CreateGloballMessage) {
+        try {
+            const option = { headers: {'Authorization': getCookie(AccessTokenName)} }
+            const res = await axios.post(GLOBAL_MESSAGE_ADD_URL, data, option)
+            console.log(res)
         } catch(e) {
             console.log(e)
         }

@@ -7,25 +7,28 @@ export type UserState = {
     email: string
     id: string
     roles: Roles[] | null
+    image: string
 }
 
 const userInitialState: UserState = {
     nickName: '',
     email: '',
     id: '',
-    roles: null
+    roles: null,
+    image: '',
 }
 
 export const userReducer = (state = userInitialState, action: AllUserActions): UserState => {
     switch(action.type) {
         case(USER_INITIAL): {
-            const { roles, nickName, email, id } = action.payload
+            const { roles, nickName, email, id, image } = action.payload
             return {
                 ...state,
                 nickName,
                 email,
                 id,
                 roles,
+                image
             }
         }
         case(USER_LOGOUT): {

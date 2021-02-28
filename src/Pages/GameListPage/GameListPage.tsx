@@ -10,8 +10,6 @@ type GameListPageProps = {}
 
 const GameListPage: React.FC<GameListPageProps> = () => {
 
-
-
     return (
         <div className="games">
             <div className="games__type-list">

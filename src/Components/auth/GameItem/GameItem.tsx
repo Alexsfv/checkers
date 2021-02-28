@@ -6,6 +6,7 @@ import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import { Button } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import LockOpenOutlinedIcon from '@material-ui/icons/LockOpenOutlined';
+import { Link } from 'react-router-dom';
 
 
 type GameItemProps = {
@@ -25,8 +26,8 @@ const GameItem: React.FC<GameItemProps> = ({ imgSrc, nickName, rate, bid, privat
                 <img src={imgSrc} alt="avatar" />
                 {
                     privateStatus
-                        ? <LockOutlinedIcon className="game-item__private-status"/>
-                        : <LockOpenOutlinedIcon className="game-item__private-status"/>
+                        ? <LockOutlinedIcon className="game-item__private-status" />
+                        : <LockOpenOutlinedIcon className="game-item__private-status" />
                 }
             </div>
 
@@ -46,7 +47,9 @@ const GameItem: React.FC<GameItemProps> = ({ imgSrc, nickName, rate, bid, privat
             </div>
 
             <div className="game-item__controls">
-                <Button>Войти</Button>
+                <Link to="/game/555">
+                    <Button>Войти</Button>
+                </Link>
             </div>
 
         </div>

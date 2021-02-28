@@ -9,3 +9,5 @@ export const TOKEN_REFRESH_URL = 'http://localhost:3333/token/refresh'
 export const USER_INFO_URL = 'http://localhost:3333/user/userInfo'
 
 export const CHECK_UNIQUE_EMAIL_URL = 'http://localhost:3333/unique/email'
+
+export const GLOBAL_MESSAGE_ADD_URL = 'http://localhost:3333/global_message/add'

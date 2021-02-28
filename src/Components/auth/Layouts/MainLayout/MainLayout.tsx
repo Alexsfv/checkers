@@ -13,7 +13,7 @@ import { UserState } from '../../../../store/reducers/UserReducer'
 import ListIcon from '@material-ui/icons/List';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { sagasActions } from '../../../../store/saga/sagasActions';
-
+import SpeakerNotesOutlinedIcon from '@material-ui/icons/SpeakerNotesOutlined';
 
 type MainLayoutProps = {
 
@@ -44,7 +44,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
                         <div className="main-layout__user">
                             <div className="main-layout__user-img">
-                                <img src="https://www.sunhome.ru/i/wallpapers/140/belka-zhivotnoe.xxl.jpg" alt="avatar" />
+                                <img src={user.image} alt="avatar" />
                             </div>
                             <div className="main-layout__user-info">
                                 <p className="main-layout__descr">Имя:</p>
@@ -63,7 +63,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                                 </li>
                                 <li>
                                     <NavLink to="/chat" className="main-layout__link-item">
-                                        <MessageOutlinedIcon /> Чат
+                                        <SpeakerNotesOutlinedIcon /> Сообщения
                                     </NavLink>
                                 </li>
                                 <li>
@@ -74,6 +74,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                                 <li>
                                     <NavLink to="/leaders" className="main-layout__link-item">
                                         <InsertChartOutlinedTwoToneIcon /> Лидеры
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/chat" className="main-layout__link-item">
+                                        <MessageOutlinedIcon /> Общий чат
                                     </NavLink>
                                 </li>
                                 <li>
